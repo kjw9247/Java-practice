@@ -62,7 +62,7 @@ public class NoticeApp extends JFrame implements ActionListener {// JFrame을 �
         this.add("Center", jsp_notice);
         con.revalidate();
     }// end of 전체 조회 (새로고침 역할수행)
-    
+
 
     @Override
     public void actionPerformed(ActionEvent e) {

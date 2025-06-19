@@ -4,6 +4,7 @@ package com.day11.design;
 // 구현체 클래스 라고 한다
 public class DuckSimulation {
     public static void main(String[] args) {
+        // FlyBehavior fb = new FlyBehavior();
         Duck myduck = new MallardDuck();
         myduck.performFly();
         Duck herduck = new RubberDuck();

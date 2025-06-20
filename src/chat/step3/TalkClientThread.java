@@ -38,9 +38,38 @@ public class TalkClientThread extends Thread {
                         tc.jta_display.setCaretPosition(tc.jta_display.getDocument().getLength());
                     }break;
                     case  300:{
-
+                        String chatName = st.nextToken();
+                        String afterName = st.nextToken();
+                        String message = st.nextToken();
+                        // 테이블에 대화명 변경하기
+                        for (int i=0; i<tc.dtm.getRowCount(); i++){
+                            String imsi = tc.dtm.getValueAt(i,0).toString();
+                            if (chatName.equals(imsi)){
+                                tc.dtm.setValueAt(afterName,i,0);
+                                break;
+                            }
+                        }
+                        // 채팅창에 타이틀바에도 대화명을 변경처리 한다
+                        if (chatName.equals(tc.chatName)){
+                            tc.setTitle(afterName);
+                            tc.chatName=afterName;
+                        }
+                        tc.jta_display.append(message+"\n");
                     }break;
-                }
+                    case Protocol.EXIT:{ // 500#키위
+                        String chatName = st.nextToken();
+                        tc.jta_display.append(chatName+"님이 퇴장 하였습니다.\n");
+                        tc.jta_display.setCaretPosition
+                        (tc.jta_display.getDocument().getLength());
+                        // 테이블에서 chatName 제거하기
+                        for (int i = 0; i < tc.dtm.getRowCount(); i++) {
+                            String temp = (String)tc.dtm.getValueAt(i,0);
+                            if (temp.equals(chatName)){
+                                tc.dtm.removeRow(i);
+                            }
+                        }// end of for
+                    }break;
+                }// end of switch
             }catch(Exception e){
 
             }

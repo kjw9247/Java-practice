@@ -70,8 +70,8 @@ public class EmpVO {
         return deptno;
     }
 
-    public void setDeptno(int deptnp) {
-        this.deptno = deptnp;
+    public void setDeptno(int deptno) {
+        this.deptno = deptno;
     }
 
 }
